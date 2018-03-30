@@ -21,6 +21,9 @@ const defaultCenter = {
   lat: 33.913609,
   lng: -118.384909,
 };
+const mapOptions = {
+  scrollwheel: false,
+};
 
 const distanceToMouse = ({ x, y }, { x: mouseX, y: mouseY }) =>
   Math.sqrt(
@@ -31,6 +34,7 @@ const MapComponent = props => (
   <Container>
     <GoogleMap
       bootstrapURLKeys={{ key: [process.env.REACT_APP_GOOGLE_API_KEY] }}
+      options={mapOptions}
       zoom={props.zoom}
       center={props.center}
       defaultZoom={defaultZoom}
