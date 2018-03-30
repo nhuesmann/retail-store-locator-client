@@ -2,7 +2,7 @@
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 /* eslint no-confusing-arrow: 0 */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -10,7 +10,7 @@ import icon from '../images/icons/map-marker@2x.png';
 
 const markerWidth = '20px';
 const markerHeight = '37px';
-const hoverMultiplier = 1.3;
+const hoverMultiplier = 1.4;
 
 const MarkerContainer = styled.div`
   position: absolute;
@@ -26,23 +26,67 @@ const MarkerContainer = styled.div`
     active
       ? `calc(-${markerHeight} * ${hoverMultiplier})`
       : `calc(-${markerHeight})`};
+  z-index: ${({ active }) => (active ? 999 : 0)};
   cursor: pointer;
   transition: all 0.1s ease;
 `;
 
-const Marker = props =>
-  props.show && (
-    <MarkerContainer
-      active={props.$hover || props.hovered || props.clicked}
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}
-      onClick={props.onClick}
-    >
-      <img width="100%" height="100%" src={icon} alt="map marker" />
-    </MarkerContainer>
-  );
+class Marker extends Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.id === nextProps.id) {
+      if (
+        this.props.$hover !== nextProps.$hover ||
+        this.props.hovered !== nextProps.hovered ||
+        this.props.clicked !== nextProps.clicked ||
+        this.props.showMarkers !== nextProps.showMarkers
+      ) {
+        return true;
+      }
+
+      return false;
+    }
+
+    return true;
+  }
+
+  render() {
+    return (
+      this.props.show && (
+        <MarkerContainer
+          active={this.props.$hover || this.props.hovered || this.props.clicked}
+          onMouseEnter={this.props.onMouseEnter}
+          onMouseLeave={this.props.onMouseLeave}
+          onClick={this.props.onClick}
+        >
+          <img width="100%" height="100%" src={icon} alt="map marker" />
+        </MarkerContainer>
+      )
+    );
+  }
+}
+
+// TODO: remove the following once confirmed that performance is fixed
+
+// const Marker = props => {
+//   console.log('updating the marker!');
+
+//   return (
+//     props.show && (
+//       <MarkerContainer
+//         active={props.$hover || props.hovered || props.clicked}
+//         onMouseEnter={props.onMouseEnter}
+//         onMouseLeave={props.onMouseLeave}
+//         onClick={props.onClick}
+//       >
+//         <img width="100%" height="100%" src={icon} alt="map marker" />
+//       </MarkerContainer>
+//     )
+//   );
+// };
 
 Marker.propTypes = {
+  id: PropTypes.string.isRequired,
+  showMarkers: PropTypes.bool.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,

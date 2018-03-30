@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   margin: 10px auto;
   max-width: 1200px;
+  max-height: 800px;
 `;
 
 const SearchContainer = styled.div`

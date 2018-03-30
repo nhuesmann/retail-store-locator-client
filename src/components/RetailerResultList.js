@@ -10,8 +10,20 @@ import RetailerResult from './RetailerResult';
 import NoResults from './NoResults';
 
 const Container = styled.div`
-  margin-top: 20px;
-  padding-right: 7px;
+  margin-top: 15px;
+  max-height: 714px;
+  overflow: scroll;
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
 `;
 
 const RetailerResultList = props => (
