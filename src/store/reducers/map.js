@@ -25,7 +25,7 @@ const initialState = {
     sw: { lat: null, lng: null },
   },
   size: null,
-  showMarkers: false,
+  showMarkers: true,
   hoveredRetailerId: null,
   clickedRetailerId: null,
 };

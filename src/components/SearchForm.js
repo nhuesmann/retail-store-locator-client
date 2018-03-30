@@ -21,7 +21,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7px;
+  margin: 8px 0 0 1px;
 `;
 
 const Button = styled.button`
@@ -33,7 +33,7 @@ const Button = styled.button`
   background-color: rgb(253, 103, 33);
   border: none;
   border-radius: 4px;
-  width: 76px;
+  width: 102px;
   height: 25px;
   padding-top: 3px;
   cursor: pointer;
@@ -47,7 +47,6 @@ const Form = styled.form`
 const formStyles = {
   root: {
     paddingBottom: '0px',
-    marginTop: '5px',
     marginRight: '10px',
     flex: '4',
     color: 'rgb(78, 78, 78)',
@@ -58,11 +57,11 @@ const formStyles = {
     outline: 'none',
     fontSize: '16px',
     fontFamily: 'Verlag-Light',
-    height: '50px',
+    height: '71px',
   },
   autocompleteContainer: {
     position: 'absolute',
-    top: '38px',
+    top: '70px',
     boxShadow: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
     backgroundColor: 'white',
     border: 'none',

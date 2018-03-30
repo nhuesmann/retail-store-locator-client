@@ -46,6 +46,8 @@ const MapComponent = props => (
       {props.markers.length > 0 &&
         props.markers.map(retailer => (
           <Marker
+            id={retailer._id}
+            showMarkers={props.showMarkers}
             key={retailer._id}
             lng={retailer.location.coordinates[0]}
             lat={retailer.location.coordinates[1]}

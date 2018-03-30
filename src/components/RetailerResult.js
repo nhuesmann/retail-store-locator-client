@@ -4,8 +4,9 @@
 /* eslint jsx-a11y/click-events-have-key-events: 0 */
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 /* eslint no-confusing-arrow: 0 */
+/* eslint no-underscore-dangle: "off" */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -26,25 +27,66 @@ const Retailer = styled.p`
   color: inherit;
 `;
 
-const RetailerResult = props => {
-  const { retailer } = props;
+class RetailerResult extends Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.retailer._id === nextProps.retailer._id) {
+      if (
+        this.props.hovered !== nextProps.hovered ||
+        this.props.clicked !== nextProps.clicked
+      ) {
+        return true;
+      }
 
-  return (
-    <Container
-      active={props.hovered || props.clicked}
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}
-      onClick={props.onClick}
-    >
-      <Heading>{retailer.name}</Heading>
-      <Retailer>
-        {retailer.address_1}
-        {retailer.address_2 ? ` ${retailer.address_2}` : null}, {retailer.city}{' '}
-        {retailer.state} {retailer.zip.slice(0, 5)}
-      </Retailer>
-    </Container>
-  );
-};
+      return false;
+    }
+
+    return true;
+  }
+
+  render() {
+    const { retailer } = this.props;
+
+    return (
+      <Container
+        active={this.props.hovered || this.props.clicked}
+        onMouseEnter={this.props.onMouseEnter}
+        onMouseLeave={this.props.onMouseLeave}
+        onClick={this.props.onClick}
+      >
+        <Heading>{retailer.name}</Heading>
+        <Retailer>
+          {retailer.address_1}
+          {retailer.address_2 ? ` ${retailer.address_2}` : null},{' '}
+          {retailer.city} {retailer.state} {retailer.zip.slice(0, 5)}
+        </Retailer>
+      </Container>
+    );
+  }
+}
+
+// TODO: remove the following once confirmed that performance is fixed
+
+// const RetailerResult = props => {
+//   const { retailer } = props;
+
+//   console.log('retailer result rendering');
+
+//   return (
+//     <Container
+//       active={props.hovered || props.clicked}
+//       onMouseEnter={props.onMouseEnter}
+//       onMouseLeave={props.onMouseLeave}
+//       onClick={props.onClick}
+//     >
+//       <Heading>{retailer.name}</Heading>
+//       <Retailer>
+//         {retailer.address_1}
+//         {retailer.address_2 ? ` ${retailer.address_2}` : null}, {retailer.city}{' '}
+//         {retailer.state} {retailer.zip.slice(0, 5)}
+//       </Retailer>
+//     </Container>
+//   );
+// };
 
 RetailerResult.propTypes = {
   retailer: PropTypes.object.isRequired,
