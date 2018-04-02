@@ -1,4 +1,3 @@
-/* eslint react/no-unused-state: 0 */
 /* eslint react/forbid-prop-types: "off" */
 
 import React from 'react';

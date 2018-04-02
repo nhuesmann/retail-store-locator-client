@@ -1,7 +1,6 @@
 /* eslint react/require-default-props: "off" */
 /* eslint react/forbid-prop-types: "off" */
 /* eslint react/no-unused-prop-types: "off" */
-/* eslint no-underscore-dangle: "off" */
 /* eslint object-curly-newline: "off" */
 
 import React, { Component } from 'react';

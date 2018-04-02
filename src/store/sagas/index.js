@@ -15,12 +15,10 @@ const {
 } = actions;
 
 const fetchEntityCollection = (resource, query) => {
+  const baseUrl = process.env.REACT_APP_SERVER_URL;
   const queryString = query ? `/${query}` : '';
 
-  // TODO: hide in env???
-  const baseUrl = 'https://murmuring-atoll-18859.herokuapp.com/';
-
-  return axios.get(`${baseUrl}${resource}${queryString}`);
+  return axios.get(`${baseUrl}/${resource}${queryString}`);
 };
 
 function* getRetailersSaga({ origin, searchRadius }) {

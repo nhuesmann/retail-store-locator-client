@@ -1,4 +1,3 @@
-/* eslint no-underscore-dangle: "off" */
 /* eslint react/forbid-prop-types: "off" */
 
 import React, { Component } from 'react';

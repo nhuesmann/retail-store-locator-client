@@ -28,6 +28,7 @@
     ],
     "function-paren-newline": ["error", "consistent"],
     "no-mixed-operators": ["error", { "groups": [["*", "/"]] }],
+    "no-underscore-dangle": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
     "prettier/prettier": [
       "error",

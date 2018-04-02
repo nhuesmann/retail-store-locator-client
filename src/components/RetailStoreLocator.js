@@ -1,5 +1,3 @@
-/* eslint react/forbid-prop-types: "off" */
-
 import React from 'react';
 import styled from 'styled-components';
 

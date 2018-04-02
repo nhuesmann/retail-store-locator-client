@@ -1,6 +1,6 @@
-/* eslint no-underscore-dangle: "off" */
 /* eslint react/forbid-prop-types: "off" */
 /* eslint react/no-unused-prop-types: "off" */
+/* eslint no-nested-ternary: 0 */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -26,8 +26,6 @@ const Container = styled.div`
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   }
 `;
-
-/* eslint no-nested-ternary: 0 */
 
 const RetailerResultList = props => (
   <Container>

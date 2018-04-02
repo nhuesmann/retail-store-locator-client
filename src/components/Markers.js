@@ -1,8 +1,6 @@
 /* eslint react/require-default-props: "off" */
 /* eslint react/forbid-prop-types: "off" */
 /* eslint react/no-unused-prop-types: "off" */
-/* eslint no-underscore-dangle: "off" */
-/* eslint object-curly-newline: "off" */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -19,8 +17,6 @@ class Markers extends Component {
   }
 
   render() {
-    console.log('markers!', this.props.markers.length);
-
     return (
       this.props.markers.length > 0 &&
       this.props.markers.map(retailer => (

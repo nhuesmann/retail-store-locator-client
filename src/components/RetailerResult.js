@@ -1,10 +1,5 @@
 /* eslint react/require-default-props: 0 */
 /* eslint react/forbid-prop-types: 0 */
-/* eslint object-curly-newline: 0 */
-/* eslint jsx-a11y/click-events-have-key-events: 0 */
-/* eslint jsx-a11y/no-static-element-interactions: 0 */
-/* eslint no-confusing-arrow: 0 */
-/* eslint no-underscore-dangle: "off" */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -63,30 +58,6 @@ class RetailerResult extends Component {
     );
   }
 }
-
-// TODO: remove the following once confirmed that performance is fixed
-
-// const RetailerResult = props => {
-//   const { retailer } = props;
-
-//   console.log('retailer result rendering');
-
-//   return (
-//     <Container
-//       active={props.hovered || props.clicked}
-//       onMouseEnter={props.onMouseEnter}
-//       onMouseLeave={props.onMouseLeave}
-//       onClick={props.onClick}
-//     >
-//       <Heading>{retailer.name}</Heading>
-//       <Retailer>
-//         {retailer.address_1}
-//         {retailer.address_2 ? ` ${retailer.address_2}` : null}, {retailer.city}{' '}
-//         {retailer.state} {retailer.zip.slice(0, 5)}
-//       </Retailer>
-//     </Container>
-//   );
-// };
 
 RetailerResult.propTypes = {
   retailer: PropTypes.object.isRequired,
