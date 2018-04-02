@@ -47,6 +47,7 @@ const formStyles = {
   root: {
     paddingBottom: '0px',
     marginRight: '10px',
+    marginBottom: '14px',
     flex: '4',
     color: 'rgb(78, 78, 78)',
   },
@@ -65,6 +66,7 @@ const formStyles = {
     backgroundColor: 'white',
     border: 'none',
     width: '100%',
+    zIndex: '9',
   },
   autocompleteItem: {
     backgroundColor: '#ffffff',

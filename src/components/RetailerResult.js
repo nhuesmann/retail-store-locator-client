@@ -12,6 +12,10 @@ const Container = styled.div`
   text-align: left;
   color: ${({ active }) => (active ? 'white' : 'rgb(78, 78, 78)')};
   background-color: ${({ active }) => (active ? 'rgb(253, 103, 33)' : 'white')};
+
+  @media (max-width: 767px) {
+    padding: 10px 15px;
+  }
 `;
 
 const Heading = styled.h2`
