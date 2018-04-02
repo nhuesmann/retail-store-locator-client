@@ -1,17 +1,39 @@
 import * as ActionTypes from '../actions';
 
-const initialState = [];
+const initialState = {
+  loading: false,
+  results: [],
+};
+
+function getRetailersRequest(state) {
+  return {
+    ...state,
+    loading: true,
+    results: [],
+  };
+}
 
 function getRetailersSuccess(state, action) {
-  return action.retailers;
+  return {
+    ...state,
+    loading: false,
+    results: action.retailers,
+  };
 }
 
 function getRetailersFailure(state) {
-  return state;
+  return {
+    ...state,
+    loading: false,
+    results: [],
+  };
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionTypes.GET_RETAILERS.REQUEST:
+      return getRetailersRequest(state);
+
     case ActionTypes.GET_RETAILERS.SUCCESS:
       return getRetailersSuccess(state, action);
 
