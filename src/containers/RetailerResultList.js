@@ -32,6 +32,7 @@ class RetailerResultListContainer extends Component {
 
 RetailerResultListContainer.propTypes = {
   retailers: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
   hoveredRetailerId: PropTypes.string,
   clickedRetailerId: PropTypes.string,
   searchCompleted: PropTypes.bool.isRequired,
@@ -56,7 +57,8 @@ RetailerResultListContainer.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  retailers: state.retailers,
+  retailers: state.retailers.results,
+  loading: state.retailers.loading,
   hoveredRetailerId: state.map.hoveredRetailerId,
   clickedRetailerId: state.map.clickedRetailerId,
   searchCompleted: state.form.searchCompleted,

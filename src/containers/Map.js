@@ -124,7 +124,7 @@ MapContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  retailers: state.retailers,
+  retailers: state.retailers.results,
   zoom: state.map.zoom,
   center: state.map.center,
   bounds: state.map.bounds,
