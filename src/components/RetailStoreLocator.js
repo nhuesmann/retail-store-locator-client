@@ -10,6 +10,10 @@ const Container = styled.div`
   margin: 10px auto;
   max-width: 1200px;
   max-height: 800px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 const SearchContainer = styled.div`

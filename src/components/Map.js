@@ -12,6 +12,10 @@ import Marker from './Marker';
 const Container = styled.div`
   width: 100%;
   height: 800px;
+
+  @media (max-width: 767px) {
+    height: 400px;
+  }
 `;
 
 const defaultZoom = 11;

@@ -11,9 +11,12 @@ import NoResults from './NoResults';
 import Loading from './Loading';
 
 const Container = styled.div`
-  margin-top: 15px;
   max-height: 714px;
   overflow: scroll;
+
+  @media (max-width: 767px) {
+    max-height: 219px;
+  }
 
   ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -27,37 +30,38 @@ const Container = styled.div`
   }
 `;
 
-const RetailerResultList = props => (
-  <Container>
-    <ul>
-      {props.loading ? (
-        <li>
-          <Loading />
-        </li>
-      ) : props.retailers.length > 0 && props.searchCompleted ? (
-        props.retailers.map(retailer => (
-          <li key={retailer._id}>
-            <RetailerResult
-              retailer={retailer}
-              hovered={retailer._id === props.hoveredRetailerId}
-              clicked={retailer._id === props.clickedRetailerId}
-              onMouseEnter={() => props.retailerHovered(retailer._id)}
-              onMouseLeave={props.retailerHoverExited}
-              onClick={() => props.retailerClicked(retailer._id)}
+const RetailerResultList = props =>
+  props.searchOrigin.placeId && (
+    <Container>
+      <ul>
+        {props.loading ? (
+          <li>
+            <Loading />
+          </li>
+        ) : props.retailers.length > 0 && props.searchCompleted ? (
+          props.retailers.map(retailer => (
+            <li key={retailer._id}>
+              <RetailerResult
+                retailer={retailer}
+                hovered={retailer._id === props.hoveredRetailerId}
+                clicked={retailer._id === props.clickedRetailerId}
+                onMouseEnter={() => props.retailerHovered(retailer._id)}
+                onMouseLeave={props.retailerHoverExited}
+                onClick={() => props.retailerClicked(retailer._id)}
+              />
+            </li>
+          ))
+        ) : props.retailers.length === 0 && props.searchCompleted ? (
+          <li>
+            <NoResults
+              searchRadiusOptions={props.searchRadiusOptions}
+              searchRadiusIndex={props.searchRadiusIndex}
             />
           </li>
-        ))
-      ) : props.retailers.length === 0 && props.searchCompleted ? (
-        <li>
-          <NoResults
-            searchRadiusOptions={props.searchRadiusOptions}
-            searchRadiusIndex={props.searchRadiusIndex}
-          />
-        </li>
-      ) : null}
-    </ul>
-  </Container>
-);
+        ) : null}
+      </ul>
+    </Container>
+  );
 
 RetailerResultList.propTypes = {
   retailers: PropTypes.array.isRequired,
@@ -67,6 +71,14 @@ RetailerResultList.propTypes = {
   searchCompleted: PropTypes.bool.isRequired,
   searchRadiusOptions: PropTypes.arrayOf(PropTypes.number).isRequired,
   searchRadiusIndex: PropTypes.number.isRequired,
+  searchOrigin: PropTypes.shape({
+    address: PropTypes.string,
+    placeId: PropTypes.string,
+    coordinates: PropTypes.shape({
+      lat: PropTypes.number,
+      lng: PropTypes.number,
+    }),
+  }).isRequired,
   retailerHovered: PropTypes.func.isRequired,
   retailerHoverExited: PropTypes.func.isRequired,
   retailerClicked: PropTypes.func.isRequired,
