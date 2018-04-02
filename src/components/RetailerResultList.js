@@ -80,34 +80,3 @@ RetailerResultList.defaultProps = {
 };
 
 export default RetailerResultList;
-
-// {
-//   props.loading ? <Loading /> : null;
-// }
-// {
-//   props.retailers.length > 0 &&
-//     props.searchCompleted &&
-//     props.retailers.map(retailer => (
-//       <li key={retailer._id}>
-//         <RetailerResult
-//           retailer={retailer}
-//           hovered={retailer._id === props.hoveredRetailerId}
-//           clicked={retailer._id === props.clickedRetailerId}
-//           onMouseEnter={() => props.retailerHovered(retailer._id)}
-//           onMouseLeave={props.retailerHoverExited}
-//           onClick={() => props.retailerClicked(retailer._id)}
-//         />
-//       </li>
-//     ));
-// }
-// {
-//   props.retailers.length === 0 &&
-//     props.searchCompleted && (
-//       <li>
-//         <NoResults
-//           searchRadiusOptions={props.searchRadiusOptions}
-//           searchRadiusIndex={props.searchRadiusIndex}
-//         />
-//       </li>
-//     );
-// }

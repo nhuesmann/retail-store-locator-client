@@ -26,7 +26,7 @@ import {
 
 class MapContainer extends Component {
   componentWillReceiveProps(nextProps) {
-    if (nextProps.retailers !== this.props.retailers) {
+    if (nextProps.retailers !== this.props.retailers && !nextProps.loading) {
       this.props.updateMapFromRetailers(
         nextProps.retailers,
         this.props.size,
@@ -80,6 +80,7 @@ class MapContainer extends Component {
 
 MapContainer.propTypes = {
   retailers: PropTypes.array,
+  loading: PropTypes.bool,
   zoom: PropTypes.number,
   center: PropTypes.shape({ lat: PropTypes.number, lng: PropTypes.number }),
   bounds: PropTypes.shape({
@@ -125,6 +126,7 @@ MapContainer.propTypes = {
 
 const mapStateToProps = state => ({
   retailers: state.retailers.results,
+  loading: state.retailers.loading,
   zoom: state.map.zoom,
   center: state.map.center,
   bounds: state.map.bounds,

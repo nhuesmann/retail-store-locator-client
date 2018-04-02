@@ -11,7 +11,7 @@ const initialState = {
     },
   },
   searchRadiusOptions: [5, 10, 25, 50],
-  searchRadiusSelectedIndex: 1,
+  searchRadiusSelectedIndex: 2,
   searchCompleted: false,
 };
 
